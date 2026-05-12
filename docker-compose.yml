@@ -1,0 +1,20 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio-miguel:latest
+    container_name: portfolio-miguel
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+    networks:
+      - web
+    expose:
+      - "3000"
+
+networks:
+  web:
+    external: true
